@@ -1,0 +1,101 @@
+/*-------------------- dependencies*/
+
+@import "_control";
+@import "_sysBreeks";
+
+/*-------------------- major DOM elements*/
+
+@include resetAll;
+
+@include headings;
+
+@include boxBase;
+
+body {
+    min-height: 100vh;
+    width: 100%;
+    font-family: $baseFont;
+    color: $fontColor;
+    display: flex;
+    overflow-y: scroll;
+}
+#wrapper {
+    width: 100%;
+}
+
+/*-------------------- icons default*/
+
+// size
+$iconSize: px(24);
+// color
+$iconColor: $fontColor;
+a svg,
+button svg,
+label svg {
+    pointer-events: none;
+}
+.icon {
+    fill: $iconColor;
+    width: $iconSize;
+    height: $iconSize;
+}
+
+/*----------------------------------------------------------------------*/
+
+/*wrapper*/
+
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/*header*/
+
+header {
+  @include mainPadding;
+    height: 3rem;
+    background-color: $baseColor;
+    color: #fff;
+}
+
+/*nav*/
+
+nav{
+    min-height: 3rem;
+    display: flex;
+    align-items: center;
+    
+    a{
+        &.active{
+            font-weight: 600;
+        }
+    }
+    
+     section{
+     @include gridBase;
+         
+         >div{
+           padding: 1rem 0;
+             @include desktopMix{
+                padding: 0; 
+             }
+         }
+   }
+}
+
+/*main*/
+
+main {
+    [box]{
+        min-height: px(700);
+        background-color: $dullColor;
+        padding-top: 2rem;
+    } 
+    
+    section{
+     @include gridBase;
+   }
+}
+
+

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <% include ./partials/headSection %>
+    <link rel='stylesheet' href='/css/main.css' />
+    
+</head>
+
+<body>
+   <% include ./partials/svgIcons %>
+    <div id="wrapper">
+        <% include ./partials/header %>
+        <% include ./partials/nav %>
+        <main>
+            <div box>
+              <section>
+                <div itm-s="10">
+                    <h3>Welcome to your newly created <%= title %>.</h3>
+                </div>
+                 
+              </section>
+            </div>
+        </main>
+    </div>
+    <script type="text/javascript" src="js/script.js"></script>
+</body>
+
+</html>
