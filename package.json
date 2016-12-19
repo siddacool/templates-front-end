@@ -1,0 +1,19 @@
+{
+  "name": "front-end-templates",
+  "version": "0.0.1",
+  "description": "a set of front end Web Templates",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/siddacool/templates"
+  },
+  "keywords": [
+    "templates",
+    "frontend",
+    "express"
+  ],
+  "author": "sid",
+  "license": "ISC"
+}
