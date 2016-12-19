@@ -1,0 +1,128 @@
+/*-------------------- dependencies*/
+
+@import "_control";
+@import "_sysBreeks";
+
+/*-------------------- major DOM elements*/
+
+@include resetAll;
+@include headings;
+@include boxBase;
+body {
+    min-height: 100vh;
+    width: 100%;
+    font-family: $baseFont;
+    color: $fontColor;
+}
+#wrapper {
+    width: 100%;
+}
+.constrainBox {
+    width: 100%;
+    max-width: px(1024);
+    margin-left: auto;
+    margin-right: auto;
+    @include mainPadding;
+}
+
+/*-------------------- icons default*/
+
+// size
+$iconSize: px(24);
+// color
+$iconColor: $fontColor;
+a svg,
+button svg,
+label svg {
+    pointer-events: none;
+}
+.icon {
+    fill: $iconColor;
+    width: $iconSize;
+    height: $iconSize;
+}
+
+#svgHolder{
+    display: none;
+}
+
+/*----------------------------------------------------------------------*/
+
+
+/*body*/
+
+#body {
+    @extend %flex;
+    flex-direction: column;
+}
+
+/*wrapper*/
+
+#wrapper {
+    flex: 1;
+}
+
+/*header*/
+
+$headerHeight: px(80);
+header {
+    height: $headerHeight;
+    color: #fff;
+    background-color: $baseColor;
+    position: relative;
+    .constrainBox {
+        position: relative;
+        display: flex;
+        height: 100%;
+    }
+    
+    section{
+        flex: 1;
+    }
+}
+
+/*nav*/
+
+nav {
+    
+    @include desktopMix{
+          height: px(50);    
+    }
+    
+    .constrainBox {
+        position: relative;
+        display: flex;
+        height: 100%;
+    }
+    
+    section{
+        flex: 1;
+    }
+    
+    a.active{
+        color: $baseColor;
+    }
+}
+
+/*main*/
+
+main {
+    .constrainBox {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+    }
+    
+   
+}
+
+ section{
+        @include gridBase;
+}
+
+/*footer*/
+
+footer {
+    height: px(40);
+    background-color: $baseColor;
+    .constrainBox {}
+}

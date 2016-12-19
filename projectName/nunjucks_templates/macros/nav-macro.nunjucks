@@ -1,0 +1,18 @@
+{% macro active(activePage='home') %}
+<nav>
+ 
+ <div box>
+     <section gd-y="middle" gd-x="center">
+         <div itm-s="20">
+              <a link href="index.html" class="{%if activePage == 'home' %} active {% endif %}">Home</a>
+         </div>
+         <div itm-s="20">
+             <a link href="about.html" class="{%if activePage == 'about' %} active {% endif %}">About</a>        
+         </div>
+     </section>
+     
+   <!-- Repeat for about and contact -->
+ </div>
+
+</nav>
+{% endmacro %}

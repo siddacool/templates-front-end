@@ -1,0 +1,35 @@
+{
+  "name": "templ-nunjucks",
+  "version": "0.0.1",
+  "description": "nunjucks website skeleton with added sass and gulp support",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "keywords": [
+    "nunjucks",
+    "sass",
+    "website"
+  ],
+  "author": "sid",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.9.11",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.0.2",
+    "gulp-combine-mq": "^0.4.0",
+    "gulp-data": "^1.2.1",
+    "gulp-nunjucks-render": "^1.1.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.0.4",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-svgmin": "^1.2.1",
+    "gulp-svgstore": "^5.0.5"
+  },
+  "dependencies": {}
+}

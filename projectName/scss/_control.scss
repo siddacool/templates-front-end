@@ -1,0 +1,104 @@
+/*-------------------- dependencies*/
+
+@import "dependencies/_functions";
+@import "dependencies/_colors";
+//-------------------- global variables//
+$baseFont: 'Source Code Pro', Courier New;
+$baseColor: $flat-emerald;
+$dullColor: #f2f2f2;
+$fontColor: $ios-charcoal;
+$fontAltColor: $ios-charcoal;
+
+$dangerRed: $ios-red;
+//user defined//
+
+/*-------------------- common stuff*/
+
+@mixin mainPadding {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    
+    @include tablet{
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+    }
+    
+    @include desktop{
+        padding-left: 3.5rem;
+        padding-right: 3.5rem;
+    }
+}
+
+
+@mixin flexMiddle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+%flexMiddle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+%flex {
+    display: flex;
+}
+%flexInline {
+    display: inline-flex;
+}
+.dbi {
+    display: block !important;
+}
+@mixin dbi {
+    display: block !important;
+}
+
+/*-------------------- user defined stuff*/
+
+@mixin resetAll {
+    body {
+        margin: 0;
+        padding: 0;
+        border: none;
+        outline: none;
+    }
+    * {
+        box-sizing: border-box;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    button {
+        font-weight: normal;
+        font-style: normal;
+        text-decoration: none;
+        margin: 0;
+        padding: 0;
+        border: none;
+        outline: 0;
+        background: none;
+    }
+    a {
+        text-decoration: none;
+        margin: 0;
+        color: inherit;
+    }
+    ul,
+    ol,
+    li {
+        text-decoration: none;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        display: inline-block;
+    }
+    :focus {
+        outline: 0;
+    }
+}
+
+
