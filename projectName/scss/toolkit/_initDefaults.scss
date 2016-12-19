@@ -1,0 +1,50 @@
+/* Init Defaults */
+
+//### Major DOM elements
+//+++
+
+//## Body
+body {
+    @extend %flex;
+    min-height: 100vh;
+    width: 100%;
+    font-family: $baseFont;
+    color: $fontColor;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+//## Wrapper
+#wrapper {
+    width: 100%;
+    flex: 1;
+    @include desktopMixEx{
+        display: flex;
+        flex-direction: column;
+    }
+    transition: background-color 400ms;
+}
+
+//---
+//### Svg icons defaults
+//+++
+
+//## Svg icon size
+$iconSize: px(24);
+//## Svg icon Color
+$iconColor: $fontColor;
+//## Svg icons Color
+a svg,
+button svg,
+label svg {
+    pointer-events: none;
+}
+.icon {
+    fill: $iconColor;
+    width: $iconSize;
+    height: $iconSize;
+}
+#svgHolder {
+    display: none;
+}
+
+//---

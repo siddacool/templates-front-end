@@ -1,0 +1,33 @@
+/* Control */
+
+//### Dependencies
+//+++
+
+//## Important functions, media queries
+@import "./dependencies/functions";
+//## A set of diffrent ui colors
+@import "./dependencies/colors";
+
+//---
+//### Default variables
+//+++
+
+//## Primary font,google font declaration
+$baseFont: 'Roboto', Arial,Helvetica,sans-serif;
+//## Primary background color
+$baseColor: $ios-green;
+//## Alternate background color
+$baseAltColor: #000;
+//## Dull background color
+$dullColor: #f4f4f4;
+//## Primary font color
+$fontColor: $ios-charcoal;
+//## Alternate font color
+$fontAltColor: #ffffff;
+
+//---
+//### User defined variables
+//+++
+
+
+//---

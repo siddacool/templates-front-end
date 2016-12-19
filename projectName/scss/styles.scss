@@ -1,0 +1,43 @@
+/* Styles */
+
+//### Base
+//+++
+
+//## Control
+@import "./base/control";
+
+//---
+//### Toolkit : Hacks,fixes etc. it's got you covered
+//+++
+
+//## reset all
+@import "./toolkit/resetAll";
+//## set of global mixins
+@import "./toolkit/mixinMaster";
+//## Initialise default dom element properties
+@import "./toolkit/initDefaults";
+
+//---
+//### Attachments : External libraries, grid systems etc.
+//+++
+
+//## sysBreeks, grid and typography system
+@import "./attachments/sysBreeks";
+
+//---
+//### Parts : Page Partials like Nav,Header,footer etc.
+//+++
+
+//## main-index
+@import "./parts/main";
+//## Header
+@import "./parts/header";
+
+//---
+//### components
+//+++
+
+//## exampleComponent
+@import "./components/exampleComponent";
+
+//---

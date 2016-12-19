@@ -1,0 +1,55 @@
+/* Mixin Master */
+
+//### Default mixins
+//+++
+
+//## Main padding
+@mixin mainPadding {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    
+    @include tablet{
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+    }
+    
+    @include desktop{
+        padding-left: 3.5rem;
+        padding-right: 3.5rem;
+    }
+}
+//## Display block important class
+.dbi {
+    display: block !important;
+}
+//## Display block important mixin
+@mixin dbi {
+    display: block !important;
+}
+//## Display flex group inheritance
+%flex {
+    display: flex;
+}
+//## Display inline-flex group inheritance
+%flexInline {
+    display: inline-flex;
+}
+//## flex midlle mixin
+@mixin flexMiddle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+//## flex midlle group inheritance
+%flexMiddle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+//---
+//### User defined mixins
+//+++
+
+
+//---

@@ -1,0 +1,176 @@
+/* Systematic Breeks */
+/* v 1.3 : Petra */
+/* 2016-12-15 */
+/* Project link : https://github.com/siddacool/sys-breeks */
+/* Author : Siddhesh Mangela */
+
+/* >>> */
+
+/* Dependencies */
+/* +++ */
+
+//#! Responsive media queries
+//@import "sysBreeks-mq";
+//## Grid base
+@import "sysBreeks-core";
+//## Headings and typography base
+@import "sysBreeks-headings";
+
+/* --- */
+/* Initialize Mixins (enable/disable features) */
+/* +++ */
+
+//##! Constrain Boxes Properties
+//+++
+
+//## Normal Box Width
+$constrainWidth: 1024px;
+//## Large Box Width
+$largeWidth: 1200px;
+//## Small Box Width
+$smallWidth: 700px;
+
+//---
+//### Constrain Boxes
+//+++
+
+//## Normal box ,constrain box
+@include box-normal{
+    max-width: $constrainWidth;
+};
+//## Large box
+@include box-large{
+    max-width: $largeWidth;
+};
+//## Fluid box ,full box
+@include box-fluid;
+//## Justify box, stretch box
+@include box-justify;
+//## Small box
+@include box-small{
+    max-width: $smallWidth;
+};
+//## Extended box
+@include box-extended;
+
+//---
+//### Grid alignment
+//+++
+
+//## Grid horizontal all
+@include gd-x;
+//## Grid horizontal tablet
+@include gd-xTab;
+//## Grid horizontal tablet portrait
+@include gd-xTabPort;
+//## Grid horizontal tablet landscape
+@include gd-xTabLand;
+//## Grid horizontal desktop
+@include gd-xDesk;
+//## Grid verticle all
+@include gd-y;
+//## Grid verticle tablet
+@include gd-yTab;
+//## Grid verticle tablet portrait
+@include gd-yTabPort;
+//## Grid verticle tablet landscape
+@include gd-yTabLand;
+//## Grid verticle desktop
+@include gd-yDesk;
+
+//---
+//### Grid item base unit sizes
+//+++
+
+//## Grid base unit 5
+@include gd-baseUnit-5;
+//## Grid base unit 4
+@include gd-baseUnit-4;
+//## Grid base unit 3
+@include gd-baseUnit-3;
+
+//---
+//### Item size
+//+++
+
+//## Item size all
+@include itm-s;
+//## Item size mobile
+@include itm-sMob;
+//## Item size tablet
+@include itm-sTab;
+//## Item size tablet portrait
+@include itm-sTabPort;
+//## Item size tablet landscape
+@include itm-sTabLand;
+//## Item size desktop
+@include itm-sDesk;
+
+//---
+//### Item alignment
+//+++
+
+//## Item horizontal all
+@include itm-x;
+//## Item horizontal tablet
+@include itm-xTab;
+//## Item horizontal tablet portrait
+@include itm-xTabPort;
+//## Item horizontal tablet landscape
+@include itm-xTabLand;
+//## Item horizontal desktop
+@include itm-xDesk;
+//## Item verticle all
+@include itm-y;
+//## Item verticle tablet
+@include itm-yTab;
+//## Item verticle tablet portrait
+@include itm-yTabPort;
+//## Item verticle tablet landscape
+@include itm-yTabLand;
+//## Item verticle desktop
+@include itm-yDesk;
+
+//---
+//### Item display
+//+++
+
+//## Item display all
+@include itm-d;
+//## Item display mob
+@include itm-dMob;
+//## Item display tablet
+@include itm-dTab;
+//## Item display tablet portrait
+@include itm-dTabPort;
+//## Item display tablet landscape
+@include itm-dTabLand;
+//## Item display tablet desktop
+@include itm-dDesk;
+
+//---
+//### Headings and typography
+//+++
+
+//## H1
+@include h1;
+//## H2
+@include h2;
+//## H3
+@include h3;
+//## H4
+@include h4;
+//## H5
+@include h5;
+//## H6
+@include h6;
+//## Para
+@include para;
+//## Link
+@include link;
+
+//---
+
+/* --- */
+
+/* <<< */

@@ -1,0 +1,17 @@
+/* example Component */
+
+//### Create
+//+++
+
+@mixin exampleComponent {
+ 
+}
+
+//---
+//### Attach
+//+++
+
+@include exampleComponent;
+
+//---
+

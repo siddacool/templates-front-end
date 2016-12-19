@@ -1,0 +1,1235 @@
+/* Systematic Breeks Core */
+/* Grid base */
+
+/* >>> */
+
+/* --- */
+/* Constrain Boxes */
+/* +++ */
+
+//### Set Properties
+//+++
+
+//## set Padding (Mobile screen/ smallest padding)
+$setPadding: 1.5rem;
+
+//## box Padding
+%boxPadding {
+    padding-left: $setPadding;
+    padding-right: $setPadding;
+    @include tablet {
+        padding-left: $setPadding + 1rem;
+        padding-right: $setPadding + 1rem;
+    }
+    @include desktop {
+        padding-left: $setPadding + 2rem;
+        padding-right: $setPadding + 2rem;
+    }
+}
+//## Margin center
+%boxMarginCenter {
+    margin-left: auto;
+    margin-right: auto;
+}
+//## Section tweak
+%sectTweak {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    > section {
+        width: 100%;
+        flex: 1;
+    }
+}
+
+//---
+//### Box
+//+++
+
+//## Normal box ,constrain box
+@mixin box-normal {
+    [box=""],
+    [box="constrain"],
+    [box="normal"] {
+        @content;
+        width: 100%;
+        @extend %boxMarginCenter;
+        @extend %boxPadding;
+        @extend %sectTweak;
+    }
+}
+//## Large box
+@mixin box-large {
+    [box="large"] {
+        @content;
+        width: 100%;
+        @extend %boxMarginCenter;
+        @extend %boxPadding;
+        @extend %sectTweak;
+    }
+}
+//## Fluid box ,full box
+@mixin box-fluid {
+    [box="fluid"],
+    [box="full"] {
+        width: 100%;
+        @extend %boxPadding;
+        @extend %sectTweak;
+    }
+}
+//## Justify box, stretch box
+@mixin box-justify {
+    [box="justify"],
+    [box="stretch"] {
+        width: 100%;
+        padding-left: $setPadding;
+        padding-right: $setPadding;
+        @extend %sectTweak;
+    }
+}
+//## small box
+@mixin box-small {
+    [box="small"] {
+        @content;
+        width: 100%;
+        padding-left: $setPadding;
+        padding-right: $setPadding;
+        @extend %boxMarginCenter;
+        @extend %sectTweak;
+    }
+}
+//## extended Box
+@mixin box-extended {
+    [box="extended"] {
+        width: 100%;
+        @extend %sectTweak;
+    }
+}
+
+//---
+
+/* --- */
+/* Grid System */
+/* +++ */
+
+//### Grid important and default param
+//+++
+
+//#! Grid base
+@mixin gd-base {
+    section,
+    &[gd-sect]{
+        display: flex;
+        flex-wrap: wrap;
+        // Items
+        >div {
+            align-items: center;
+            width: 100%;
+            @include desktopMixEx {
+                width: initial;
+                flex: 1;
+            }
+        }
+    }
+    
+    &[gd-optOut]{
+        display: block;
+    }
+    
+}
+//#! No Flex children
+@mixin gd-noFlex{
+    [gd-noFlex]{
+        >div{
+            flex: initial;
+            width: initial;
+            @include desktopMixEx{
+                flex: initial;
+                width: initial;
+            }
+        }
+    }
+}
+//#! gd always stays row even on phones
+@mixin gd-alwaysRow {
+    [gd-alwaysRow] {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        >div{
+            width: initial;
+            flex: 1;
+        }
+    }
+}
+//## Tablet portrait width
+@mixin tabletPortDefault {
+    width: 50%;
+    flex: initial;
+}
+//## Tablet landscape width
+@mixin tabletLandDefault {
+    width: 33.333%;
+    flex: initial;
+}
+//## Grid item size
+@mixin gridItemSize {
+    @include tabletPortrait {
+        @include tabletPortDefault;
+    }
+    @include tabletLandscape {
+        @include tabletLandDefault;
+    }
+    flex: initial;
+}
+//## item size tweak
+%itemSizeTweak {
+    @include desktopMixEx {
+        flex: initial;
+    }
+}
+
+//---
+//### Grid alignment
+//+++
+
+//## Grid horizontal all
+@mixin gd-x {
+    &[gd-x="left"] {
+        justify-content: flex-start;
+    }
+    &[gd-x="center"] {
+        justify-content: center;
+    }
+    &[gd-x="right"] {
+        justify-content: flex-end;
+    }
+    &[gd-x="justify"] {
+        justify-content: space-between;
+    }
+    &[gd-x="surround"] {
+        justify-content: space-around;
+    }
+}
+//## Grid horizontal tablet
+@mixin gd-xTab {
+    &[gd-xTab="left"] {
+        @include tablet {
+            justify-content: flex-start;
+        }
+    }
+    &[gd-xTab="center"] {
+        @include tablet {
+            justify-content: center;
+        }
+    }
+    &[gd-xTab="right"] {
+        @include tablet {
+            justify-content: flex-end;
+        }
+    }
+    &[gd-xTab="justify"] {
+        @include tablet {
+            justify-content: space-between;
+        }
+    }
+    &[gd-xTab="surround"] {
+        @include tablet {
+            justify-content: space-around;
+        }
+    }
+}
+//## Grid horizontal tablet portrait
+@mixin gd-xTabPort {
+    &[gd-xTabPort="left"] {
+        @include tabletPortrait {
+            justify-content: flex-start;
+        }
+    }
+    &[gd-xTabPort="center"] {
+        @include tabletPortrait {
+            justify-content: center;
+        }
+    }
+    &[gd-xTabPort="right"] {
+        @include tabletPortrait {
+            justify-content: flex-end;
+        }
+    }
+    &[gd-xTabPort="justify"] {
+        @include tabletPortrait {
+            justify-content: space-between;
+        }
+    }
+    &[gd-xTabPort="surround"] {
+        @include tabletPortrait {
+            justify-content: space-around;
+        }
+    }
+}
+//## Grid horizontal tablet landscape
+@mixin gd-xTabLand {
+    &[gd-xTabLand="left"] {
+        @include tabletLandscape {
+            justify-content: flex-start;
+        }
+    }
+    &[gd-xTabLand="center"] {
+        @include tabletLandscape {
+            justify-content: center;
+        }
+    }
+    &[gd-xTabLand="right"] {
+        @include tabletLandscape {
+            justify-content: flex-end;
+        }
+    }
+    &[gd-xTabLand="justify"] {
+        @include tabletLandscape {
+            justify-content: space-between;
+        }
+    }
+    &[gd-xTabLand="surround"] {
+        @include tabletLandscape {
+            justify-content: space-around;
+        }
+    }
+}
+//## Grid horizontal desktop
+@mixin gd-xDesk {
+    &[gd-xDesk="left"] {
+        @include desktop {
+            justify-content: flex-start;
+        }
+    }
+    &[gd-xDesk="center"] {
+        @include desktop {
+            justify-content: center;
+        }
+    }
+    &[gd-xDesk="right"] {
+        @include desktop {
+            justify-content: flex-end;
+        }
+    }
+    &[gd-xDesk="justify"] {
+        @include desktop {
+            justify-content: space-between;
+        }
+    }
+    &[gd-xDesk="surround"] {
+        @include desktop {
+            justify-content: space-around;
+        }
+    }
+}
+//## Grid verticle all
+@mixin gd-y {
+    &[gd-y="top"] {
+        align-content: flex-start;
+        align-items: flex-start;
+    }
+    &[gd-y="middle"] {
+        align-content: center;
+        align-items: center;
+    }
+    &[gd-y="bottom"] {
+        align-content: flex-end;
+        align-items: flex-end;
+    }
+}
+//## Grid verticle tablet
+@mixin gd-yTab {
+    &[gd-yTab="top"] {
+        @include tablet {
+            align-content: flex-start;
+            align-items: flex-start;
+        }
+    }
+    &[gd-yTab="middle"] {
+        @include tablet {
+            align-content: center;
+            align-items: center;
+        }
+    }
+    &[gd-yTab="bottom"] {
+        @include tablet {
+            align-content: flex-end;
+            align-items: flex-end;
+        }
+    }
+}
+//## Grid verticle tablet portrait
+@mixin gd-yTabPort {
+    &[gd-yTabPort="top"] {
+        @include tabletPortrait {
+            align-content: flex-start;
+            align-items: flex-start;
+        }
+    }
+    &[gd-yTabPort="middle"] {
+        @include tabletPortrait {
+            align-content: center;
+            align-items: center;
+        }
+    }
+    &[gd-yTabPort="bottom"] {
+        @include tabletPortrait {
+            align-content: flex-end;
+            align-items: flex-end;
+        }
+    }
+}
+//## Grid verticle tablet landscape
+@mixin gd-yTabLand {
+    &[gd-yTabLand="top"] {
+        @include tabletLandscape {
+            align-content: flex-start;
+            align-items: flex-start;
+        }
+    }
+    &[gd-yTabLand="middle"] {
+        @include tabletLandscape {
+            align-content: center;
+            align-items: center;
+        }
+    }
+    &[gd-yTabLand="bottom"] {
+        @include tabletLandscape {
+            align-content: flex-end;
+            align-items: flex-end;
+        }
+    }
+}
+//## Grid verticle desktop
+@mixin gd-yDesk {
+    &[gd-yDesk="top"] {
+        @include desktop {
+            align-content: flex-start;
+            align-items: flex-start;
+        }
+    }
+    &[gd-yDesk="middle"] {
+        @include desktop {
+            align-content: center;
+            align-items: center;
+        }
+    }
+    &[gd-yDesk="bottom"] {
+        @include desktop {
+            align-content: flex-end;
+            align-items: flex-end;
+        }
+    }
+}
+
+//---
+//### Grid item base unit sizes
+//+++
+
+//## Grid base unit 5
+@mixin gd-baseUnit-5 {
+    &[gd-baseUnit="5"] {
+        >div {
+            @include tabletPortrait {
+                @include tabletPortDefault;
+            }
+            @include tabletLandscape {
+                @include tabletLandDefault;
+            }
+            @include desktop {
+                width: 20%;
+                flex: initial;
+            }
+        }
+    }
+}
+//## Grid base unit 4
+@mixin gd-baseUnit-4 {
+    &[gd-baseUnit="4"] {
+        >div {
+            @include tabletPortrait {
+                @include tabletPortDefault;
+            }
+            @include tabletLandscape {
+                @include tabletLandDefault;
+            }
+            @include desktop {
+                width: 25%;
+                flex: initial;
+            }
+        }
+    }
+}
+//## Grid base unit 3
+@mixin gd-baseUnit-3 {
+    &[gd-baseUnit="3"] {
+        >div {
+            @include tablet {
+                width: 50%;
+                flex: initial;
+            }
+            @include desktop {
+                width: 33.333%;
+                flex: initial;
+            }
+        }
+    }
+}
+
+//---
+//### Item size
+//+++
+
+//## Item size all
+@mixin itm-s {
+    &[itm-s] {
+        @extend %itemSizeTweak;
+    }
+    &[itm-s="10"] {
+        @include gridItemSize;
+        @include desktopMixEx {
+            width: 10%;
+        }
+    }
+    &[itm-s="20"] {
+        @include gridItemSize;
+        @include desktopMixEx {
+            width: 20%;
+        }
+    }
+    &[itm-s="1-4"],
+    &[itm-s="25"] {
+        @include gridItemSize;
+        @include desktopMixEx {
+            width: 25%;
+        }
+    }
+    &[itm-s="30"] {
+        @include gridItemSize;
+        @include desktopMixEx {
+            width: 30%;
+        }
+    }
+    &[itm-s="1-3"],
+    &[itm-s="33"] {
+        @include gridItemSize;
+        @include desktopMixEx {
+            width: 33.333%;
+        }
+    }
+    &[itm-s="40"] {
+        @include gridItemSize;
+        @include desktopMixEx {
+            width: 40%;
+        }
+    }
+    &[itm-s="50"] {
+        @include gridItemSize;
+        @include desktopMixEx {
+            width: 50%;
+        }
+    }
+    &[itm-s="60"] {
+        @include gridItemSize;
+        @include desktopMixEx {
+            width: 60%;
+        }
+    }
+    &[itm-s="70"] {
+        @include gridItemSize;
+        @include desktopMixEx {
+            width: 70%;
+        }
+    }
+    &[itm-s="80"] {
+        @include gridItemSize;
+        @include desktopMixEx {
+            width: 80%;
+        }
+    }
+    &[itm-s="90"] {
+        @include gridItemSize;
+        @include desktopMixEx {
+            width: 90%;
+        }
+    }
+    &[itm-s="100"],
+    &[itm-s="full"] {
+        width: 100%;
+    }
+}
+//## Item size mobile
+@mixin itm-sMob {
+    &[itm-sMob] {
+        @extend %itemSizeTweak;
+    }
+    &[itm-sMob="0"],
+    &[itm-sMob="hide"] {
+        @include mobile {
+            width: 0 !important;
+            display: none;
+        }
+    }
+    &[itm-sMob="10"] {
+        @include mobile {
+            width: 10% !important;
+        }
+    }
+    &[itm-sMob="20"] {
+        @include mobile {
+            width: 20% !important;
+        }
+    }
+    &[itm-sMob="1-4"],
+    &[itm-sMob="25"] {
+        @include mobile {
+            width: 25% !important;
+        }
+    }
+    &[itm-sMob="30"] {
+        @include mobile {
+            width: 30% !important;
+        }
+    }
+    &[itm-sMob="1-3"],
+    &[itm-sMob="33"] {
+        @include mobile {
+            width: 33.333% !important;
+        }
+    }
+    &[itm-sMob="40"] {
+        @include mobile {
+            width: 40% !important;
+        }
+    }
+    &[itm-sMob="50"] {
+        @include mobile {
+            width: 50% !important;
+        }
+    }
+    &[itm-sMob="60"] {
+        @include mobile {
+            width: 60% !important;
+        }
+    }
+    &[itm-sMob="70"] {
+        @include mobile {
+            width: 70% !important;
+        }
+    }
+    &[itm-sMob="80"] {
+        @include mobile {
+            width: 80% !important;
+        }
+    }
+    &[itm-sMob="90"] {
+        @include mobile {
+            width: 90% !important;
+        }
+    }
+    &[itm-sMob="100"],
+    &[itm-sMob="full"] {
+        @include mobile {
+            width: 100% !important;
+        }
+    }
+}
+//## Item size tablet
+@mixin itm-sTab {
+    &[itm-sTab] {
+        @extend %itemSizeTweak;
+    }
+    &[itm-sTab="0"],
+    &[itm-sTab="hide"] {
+        @include tablet {
+            width: 0 !important;
+            display: none;
+        }
+    }
+    &[itm-sTab="10"] {
+        @include tablet {
+            width: 10% !important;
+        }
+    }
+    &[itm-sTab="20"] {
+        @include tablet {
+            width: 20% !important;
+        }
+    }
+    &[itm-sTab="1-4"],
+    &[itm-sTab="25"] {
+        @include tablet {
+            width: 25% !important;
+        }
+    }
+    &[itm-sTab="30"] {
+        @include tablet {
+            width: 30% !important;
+        }
+    }
+    &[itm-sTab="1-3"],
+    &[itm-sTab="33"] {
+        @include tablet {
+            width: 33.333% !important;
+        }
+    }
+    &[itm-sTab="40"] {
+        @include tablet {
+            width: 40% !important;
+        }
+    }
+    &[itm-sTab="50"] {
+        @include tablet {
+            width: 50% !important;
+        }
+    }
+    &[itm-sTab="60"] {
+        @include tablet {
+            width: 60% !important;
+        }
+    }
+    &[itm-sTab="70"] {
+        @include tablet {
+            width: 70% !important;
+        }
+    }
+    &[itm-sTab="80"] {
+        @include tablet {
+            width: 80% !important;
+        }
+    }
+    &[itm-sTab="90"] {
+        @include tablet {
+            width: 90% !important;
+        }
+    }
+    &[itm-sTab="100"],
+    &[itm-sTab="full"] {
+        @include tablet {
+            width: 100% !important;
+        }
+    }
+}
+//## Item size tablet portrait
+@mixin itm-sTabPort {
+    &[itm-sTabPort] {
+        @extend %itemSizeTweak;
+    }
+    &[itm-sTabPort="0"],
+    &[itm-sTabPort="hide"] {
+        @include tabletPortrait {
+            width: 0 !important;
+            display: none;
+        }
+    }
+    &[itm-sTabPort="10"] {
+        @include tabletPortrait {
+            width: 10% !important;
+        }
+    }
+    &[itm-sTabPort="20"] {
+        @include tabletPortrait {
+            width: 20% !important;
+        }
+    }
+    &[itm-sTabPort="1-4"],
+    &[itm-sTabPort="25"] {
+        @include tabletPortrait {
+            width: 25% !important;
+        }
+    }
+    &[itm-sTabPort="30"] {
+        @include tabletPortrait {
+            width: 30% !important;
+        }
+    }
+    &[itm-sTabPort="1-3"],
+    &[itm-sTabPort="33"] {
+        @include tabletPortrait {
+            width: 33.333% !important;
+        }
+    }
+    &[itm-sTabPort="40"] {
+        @include tabletPortrait {
+            width: 40% !important;
+        }
+    }
+    &[itm-sTabPort="50"] {
+        @include tabletPortrait {
+            width: 50% !important;
+        }
+    }
+    &[itm-sTabPort="60"] {
+        @include tabletPortrait {
+            width: 60% !important;
+        }
+    }
+    &[itm-sTabPort="70"] {
+        @include tabletPortrait {
+            width: 70% !important;
+        }
+    }
+    &[itm-sTabPort="80"] {
+        @include tabletPortrait {
+            width: 80% !important;
+        }
+    }
+    &[itm-sTabPort="90"] {
+        @include tabletPortrait {
+            width: 90% !important;
+        }
+    }
+    &[itm-sTabPort="100"],
+    &[itm-sTabPort="full"] {
+        @include tabletPortrait {
+            width: 100% !important;
+        }
+    }
+}
+//## Item size tablet landscape
+@mixin itm-sTabLand {
+    &[itm-sTabLand] {
+        @extend %itemSizeTweak;
+    }
+    &[itm-sTabLand="0"],
+    &[itm-sTabLand="hide"] {
+        @include tabletLandscape {
+            width: 0 !important;
+        }
+    }
+    &[itm-sTabLand="10"] {
+        @include tabletLandscape {
+            width: 10% !important;
+        }
+    }
+    &[itm-sTabLand="20"] {
+        @include tabletLandscape {
+            width: 20% !important;
+        }
+    }
+    &[itm-sTabLand="1-4"],
+    &[itm-sTabLand="25"] {
+        @include tabletLandscape {
+            width: 25% !important;
+        }
+    }
+    &[itm-sTabLand="30"] {
+        @include tabletLandscape {
+            width: 30% !important;
+        }
+    }
+    &[itm-sTabLand="1-3"],
+    &[itm-sTabLand="33"] {
+        @include tabletLandscape {
+            width: 33.333% !important;
+        }
+    }
+    &[itm-sTabLand="40"] {
+        @include tabletLandscape {
+            width: 40% !important;
+        }
+    }
+    &[itm-sTabLand="50"] {
+        @include tabletLandscape {
+            width: 50% !important;
+        }
+    }
+    &[itm-sTabLand="60"] {
+        @include tabletLandscape {
+            width: 60% !important;
+        }
+    }
+    &[itm-sTabLand="70"] {
+        @include tabletLandscape {
+            width: 70% !important;
+        }
+    }
+    &[itm-sTabLand="80"] {
+        @include tabletLandscape {
+            width: 80% !important;
+        }
+    }
+    &[itm-sTabLand="90"] {
+        @include tabletLandscape {
+            width: 90% !important;
+        }
+    }
+    &[itm-sTabLand="100"],
+    &[itm-sTabLand="full"] {
+        @include tabletLandscape {
+            width: 100% !important;
+        }
+    }
+}
+//## Item size desktop
+@mixin itm-sDesk {
+    &[itm-sDesk] {
+        @extend %itemSizeTweak;
+    }
+    &[itm-sDesk] {
+        @include desktop {
+            flex: initial;
+        }
+    }
+    &[itm-sDesk="0"],
+    &[itm-sDesk="hide"] {
+        @include desktop {
+            width: 0 !important;
+            display: none;
+        }
+    }
+    &[itm-sDesk="10"] {
+        @include desktop {
+            width: 10% !important;
+        }
+    }
+    &[itm-sDesk="20"] {
+        @include desktop {
+            width: 20% !important;
+        }
+    }
+    &[itm-sDesk="1-4"],
+    &[itm-sDesk="25"] {
+        @include desktop {
+            width: 25% !important;
+        }
+    }
+    &[itm-sDesk="30"] {
+        @include desktop {
+            width: 30% !important;
+        }
+    }
+    &[itm-sDesk="1-3"],
+    &[itm-sDesk="33"] {
+        @include desktop {
+            width: 33.333% !important;
+        }
+    }
+    &[itm-sDesk="40"] {
+        @include desktop {
+            width: 40% !important;
+        }
+    }
+    &[itm-sDesk="50"] {
+        @include desktop {
+            width: 50% !important;
+        }
+    }
+    &[itm-sDesk="60"] {
+        @include desktop {
+            width: 60% !important;
+        }
+    }
+    &[itm-sDesk="70"] {
+        @include desktop {
+            width: 70% !important;
+        }
+    }
+    &[itm-sDesk="80"] {
+        @include desktop {
+            width: 80% !important;
+        }
+    }
+    &[itm-sDesk="90"] {
+        @include desktop {
+            width: 90% !important;
+        }
+    }
+    &[itm-sDesk="100"] {
+        @include desktop {
+            width: 100% !important;
+        }
+    }
+}
+
+//---
+//### Item alignment
+//+++
+
+//## Item horizontal all
+@mixin itm-x {
+    &[itm-x="left"] {
+        margin-right: auto;
+    }
+    &[itm-x="center"] {
+        margin-right: auto;
+        margin-left: auto;
+        justify-content: center;
+    }
+    &[itm-x="right"] {
+        margin-left: auto;
+    }
+}
+//## Item horizontal tablet
+@mixin itm-xTab {
+    &[itm-xTab="left"] {
+        @include tablet {
+            margin-right: auto;
+        }
+    }
+    &[itm-xTab="center"] {
+        @include tablet {
+            margin-right: auto;
+            margin-left: auto;
+            justify-content: center;
+        }
+    }
+    &[itm-xTab="right"] {
+        @include tablet {
+            margin-left: auto;
+        }
+    }
+}
+//## Item horizontal tablet portrait
+@mixin itm-xTabPort {
+    &[itm-xTabPort="left"] {
+        @include tabletPortrait {
+            margin-right: auto;
+        }
+    }
+    &[itm-xTabPort="center"] {
+        @include tabletPortrait {
+            margin-right: auto;
+            margin-left: auto;
+            justify-content: center;
+        }
+    }
+    &[itm-xTabPort="right"] {
+        @include tabletPortrait {
+            margin-left: auto;
+        }
+    }
+}
+//## Item horizontal tablet landscape
+@mixin itm-xTabLand {
+    &[itm-xTabLand="left"] {
+        @include tabletLandscape {
+            margin-right: auto;
+        }
+    }
+    &[itm-xTabLand="center"] {
+        @include tabletLandscape {
+            margin-right: auto;
+            margin-left: auto;
+            justify-content: center;
+        }
+    }
+    &[itm-xTabLand="right"] {
+        @include tabletLandscape {
+            margin-left: auto;
+        }
+    }
+}
+//## Item horizontal desktop
+@mixin itm-xDesk {
+    &[itm-xDesk="left"] {
+        @include desktop {
+            margin-right: auto;
+        }
+    }
+    &[itm-xDesk="center"] {
+        @include desktop {
+            margin-right: auto;
+            margin-left: auto;
+            justify-content: center;
+        }
+    }
+    &[itm-xDesk="right"] {
+        @include desktop {
+            margin-left: auto;
+        }
+    }
+}
+//## Item verticle all
+@mixin itm-y {
+    &[itm-y="top"] {
+        align-self: flex-start;
+    }
+    &[itm-y="middle"] {
+        align-self: center;
+    }
+    &[itm-y="bottom"] {
+        align-self: flex-end;
+    }
+}
+//## Item verticle tablet
+@mixin itm-yTab {
+    &[itm-yTab="top"] {
+        @include tablet {
+            align-self: flex-start;
+        }
+    }
+    &[itm-yTab="middle"] {
+        @include tablet {
+            align-self: center;
+        }
+    }
+    &[itm-yTab="bottom"] {
+        @include tablet {
+            align-self: flex-end;
+        }
+    }
+}
+//## Item verticle tablet portrait
+@mixin itm-yTabPort {
+    &[itm-yTabPort="top"] {
+        @include tabletPortrait {
+            align-self: flex-start;
+        }
+    }
+    &[itm-yTabPort="middle"] {
+        @include tabletPortrait {
+            align-self: center;
+        }
+    }
+    &[itm-yTabPort="bottom"] {
+        @include tabletPortrait {
+            align-self: flex-end;
+        }
+    }
+}
+//## Item verticle tablet landscape
+@mixin itm-yTabLand {
+    &[itm-yTabLand="top"] {
+        @include tabletLandscape {
+            align-self: flex-start;
+        }
+    }
+    &[itm-yTabLand="middle"] {
+        @include tabletLandscape {
+            align-self: center;
+        }
+    }
+    &[itm-yTabLand="bottom"] {
+        @include tabletLandscape {
+            align-self: flex-end;
+        }
+    }
+}
+//## Item verticle desktop
+@mixin itm-yDesk {
+    &[itm-yDesk="top"] {
+        @include desktop {
+            align-self: flex-start;
+        }
+    }
+    &[itm-yDesk="middle"] {
+        @include desktop {
+            align-self: center;
+        }
+    }
+    &[itm-yDesk="bottom"] {
+        @include desktop {
+            align-self: flex-end;
+        }
+    }
+}
+
+//---
+//### Item display
+//+++
+
+//## Item display all
+@mixin itm-d {
+    &[itm-d=""],
+    &[itm-d="show"] {
+        display: block;
+    }
+    &[itm-d="hide"] {
+        display: none;
+    }
+}
+//## Item display mob
+@mixin itm-dMob {
+    &[itm-dMob=""],
+    &[itm-dMob="show"] {
+        @include mobile {
+            display: block;
+        }
+    }
+    &[itm-dMob="hide"] {
+        @include mobile {
+            display: none;
+        }
+    }
+}
+//## Item display tablet
+@mixin itm-dTab {
+    &[itm-dTab=""],
+    &[itm-dTab="show"] {
+        @include tablet {
+            display: block;
+        }
+    }
+    &[itm-dTab="hide"] {
+        @include tablet {
+            display: none;
+        }
+    }
+}
+//## Item display tablet portrait
+@mixin itm-dTabPort {
+    &[itm-dTabPort=""],
+    &[itm-dTabPort="show"] {
+        @include tabletPortrait {
+            display: block;
+        }
+    }
+    &[itm-dTabPort="hide"] {
+        @include tabletPortrait {
+            display: none;
+        }
+    }
+}
+//## Item display tablet landscape
+@mixin itm-dTabLand {
+    &[itm-dTabLand=""],
+    &[itm-dTabLand="show"] {
+        @include tabletLandscape {
+            display: block;
+        }
+    }
+    &[itm-dTabLand="hide"] {
+        @include tabletLandscape {
+            display: none;
+        }
+    }
+}
+//## Item display tablet desktop
+@mixin itm-dDesk {
+    &[itm-dDesk=""],
+    &[itm-dDesk="show"] {
+        @include desktop {
+            display: block;
+        }
+    }
+    &[itm-dDesk="hide"] {
+        @include desktop {
+            display: none;
+        }
+    }
+}
+
+//---
+
+/* --- */
+/* Initialize Required Components */
+/* +++ */
+
+//---
+//##! Grid base
+//+++
+
+//#! Grid base
+@include gd-base;
+//#! No Flex children
+@include gd-noFlex;
+//#! gd always stays row even on phones
+@include gd-alwaysRow;
+
+//---
+
+/* --- */
+
+/* <<< */
