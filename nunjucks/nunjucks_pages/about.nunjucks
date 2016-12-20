@@ -1,0 +1,30 @@
+{% extends "layout.nunjucks" %}
+
+{% block content %} 
+
+{% include "partials/icons.nunjucks" %}
+{% import 'macros/icons-macro.nunjucks' as svg %}
+ <div id="wrapper">
+
+        <!--  Add components inside body tag after this line only -------------------------->
+        {% include "partials/header.nunjucks" %}
+        {% import 'macros/nav-macro.nunjucks' as nav %}
+        
+        {{nav.active('about')}}
+
+        <main>
+            <div box>
+                    
+                        <section>
+                            <div item-s="30">
+                                <h2>About Page</h2>
+                            </div>
+                        </section>
+
+            </div>
+        </main>
+
+        <!--  stop adding components at this line only ------------------------------------->
+</div>
+
+{% endblock %}
