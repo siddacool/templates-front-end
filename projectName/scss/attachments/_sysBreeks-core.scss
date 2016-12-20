@@ -115,50 +115,78 @@ $setPadding: 1.5rem;
 //### Grid important and default param
 //+++
 
-//#! Grid base
-@mixin gd-base {
-    section,
-    &[gd-sect]{
-        display: flex;
-        flex-wrap: wrap;
-        // Items
-        >div {
-            align-items: center;
-            width: 100%;
-            @include desktopMixEx {
-                width: initial;
-                flex: 1;
-            }
-        }
-    }
-    
-    &[gd-optOut]{
+//## gd-sect
+@mixin gd-sect {
+    display: flex;
+    flex-wrap: wrap;
+}
+//## gd-optOut
+@mixin gd-optOut {
+    &[gd-optOut] {
         display: block;
     }
-    
 }
-//#! No Flex children
-@mixin gd-noFlex{
-    [gd-noFlex]{
-        >div{
+//## gd-noFlex
+@mixin gd-noFlex {
+    &[gd-noFlex] {
+        >div {
             flex: initial;
             width: initial;
-            @include desktopMixEx{
+            @include desktopMixEx {
                 flex: initial;
                 width: initial;
             }
         }
     }
 }
-//#! gd always stays row even on phones
+//## itm-noFlex
+@mixin itm-noFlex {
+    &[itm-noFlex] {
+        flex: initial;
+        @include desktopMixEx {
+            flex: initial;
+        }
+    }
+}
+//## gd-alwaysRow
 @mixin gd-alwaysRow {
-    [gd-alwaysRow] {
+    &[gd-alwaysRow] {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        >div{
+        >div {
             width: initial;
             flex: 1;
+        }
+    }
+}
+//## itm-alwaysRow
+@mixin itm-alwaysRow {
+    &[itm-alwaysRow] {
+        width: initial;
+        @include desktopMixEx {
+            width: initial;
+        }
+    }
+}
+//#! Grid base
+@mixin gd-base {
+    section,
+    [gd-sect] {
+        @include gd-sect;
+        @include gd-optOut;
+        @include itm-noFlex;
+        @include gd-alwaysRow;
+        // Items
+        >div {
+            @include itm-noFlex;
+            @include itm-alwaysRow;
+            align-items: center;
+            width: 100%;
+            @include desktopMixEx {
+                width: initial;
+                flex: 1;
+            }
         }
     }
 }
@@ -1223,10 +1251,6 @@ $setPadding: 1.5rem;
 
 //#! Grid base
 @include gd-base;
-//#! No Flex children
-@include gd-noFlex;
-//#! gd always stays row even on phones
-@include gd-alwaysRow;
 
 //---
 

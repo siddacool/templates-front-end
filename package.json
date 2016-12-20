@@ -1,7 +1,7 @@
 {
   "name": "nunjucks-modular",
   "version": "0.0.1",
-  "description": "award distribution website",
+  "description": "nunjucks-modular template",
   "main": "gulpfile.js",
   "scripts": {
     "test": "test"
@@ -11,8 +11,8 @@
     "url": "none"
   },
   "keywords": [
-    "award distribution",
-    "award"
+    "nunjucks",
+    "modular"
   ],
   "author": "sid",
   "license": "ISC",

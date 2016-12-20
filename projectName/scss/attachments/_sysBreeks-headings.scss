@@ -121,7 +121,7 @@ $sys-fontHighlight: #007AFF;
         font-weight: 400;
         @include desktopMixEx {
             font-size: 1.3rem;
-            font-weight: 300;
+            letter-spacing: -.005rem;
         }
     }
 }
