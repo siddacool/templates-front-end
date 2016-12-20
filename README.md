@@ -15,3 +15,10 @@ a set of front end Web Templates with live examples
     2. Nunjucks Template - `git checkout nunjucks`
     3. Nunjucks Modular Template - `git checkout nunjucks-modular`
     4. Express App - `git checkout express`
+    
+    
+### Live Preview
+
+* [HTML5 Template](https://siddacool.github.io/templates-front-end/html5/)
+* [Nunjucks Template](https://siddacool.github.io/templates-front-end/nunjucks/)
+* [Nunjucks Modular Template](https://siddacool.github.io/templates-front-end/nunjucks-modular/)
