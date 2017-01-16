@@ -80,11 +80,11 @@ gulp.task('scssToCss', function () {
     gulp.src(projectName + '/scss/**/*.scss')
         .pipe(sourcemaps.init())
         .pipe(sass({
-            outputStyle: 'compressed'
+            outputStyle: 'expanded'
         }))
         .pipe(plumber())
         .pipe(combineMq({
-            beautify: false
+            beautify: true
         }))
         .pipe(prefix(browserList))
         .pipe(sourcemaps.write('../sourceMaps_css'))
@@ -107,18 +107,19 @@ gulp.task('scssToCssWeb', function () {
 });
 
 // nunjucks to html
-gulp.task('nunjucks', function() {
- nunjucksRender.nunjucks.configure([projectName + '/nunjucks_templates/'],{ watch: false });
+gulp.task('nunjucks', function () {
+    nunjucksRender.nunjucks.configure([projectName + '/nunjucks_templates/'], {
+        watch: false
+    });
 
-  // Gets .html and .nunjucks files in pages
-  return gulp.src(projectName + '/nunjucks_pages/*.nunjucks')
-  // Renders template with nunjucks
-  .pipe(nunjucksRender())
-  // output files in app folder
-  .pipe(gulp.dest(dist + '/'))
-  
+    // Gets .html and .nunjucks files in pages
+    return gulp.src(projectName + '/nunjucks_pages/*.nunjucks')
+        // Renders template with nunjucks
+        .pipe(nunjucksRender())
+        // output files in app folder
+        .pipe(gulp.dest(dist + '/'))
+
 });
-
 // js compress
 var baseJs = [
     scripts + '/sys-var.js',
@@ -171,13 +172,13 @@ gulp.task('svgstore', function () {
 });
 
 // copy paste content of public folder to dist
-gulp.task('public', function() {
-  gulp.src(projectName + '/public/*/*.**')
+gulp.task('public', function () {
+    gulp.src(projectName + '/public/*/*.**')
         .pipe(plumber())
         .pipe(gulp.dest(dist + '/'));
 });
-gulp.task('publicBase', function() {
-  gulp.src(projectName + '/public/*.**')
+gulp.task('publicBase', function () {
+    gulp.src(projectName + '/public/*.**')
         .pipe(plumber())
         .pipe(gulp.dest(dist + '/'));
 });
@@ -185,17 +186,17 @@ gulp.task('publicBase', function() {
 
 /* Watch for changes */
 /* Generic */
-gulp.task('watch',function(){
-	gulp.watch(projectName + '/scss/**/*.scss',['scssToCss']);
-	gulp.watch(projectName + '/nunjucks_pages/*.nunjucks',['nunjucks']);
-	gulp.watch(projectName + '/nunjucks_templates/**/*.nunjucks',['nunjucks']);
-	gulp.watch(scripts + '/**/*.js',['jsCompress']);
+gulp.task('watch', function () {
+    gulp.watch(projectName + '/scss/**/*.scss', ['scssToCss']);
+    gulp.watch(projectName + '/nunjucks_pages/*.nunjucks', ['nunjucks']);
+    gulp.watch(projectName + '/nunjucks_templates/**/*.nunjucks', ['nunjucks']);
+    gulp.watch(scripts + '/**/*.js', ['jsCompress']);
 });
 
 
 /* Default Gulp task */
 /* type Gulp in console */
-gulp.task('default', ['scssToCss','browser-sync','nunjucks','jsCompress','watch']);
-gulp.task('web', ['scssToCssWeb','browser-sync','nunjucks','jsCompress','watch']);
+gulp.task('default', ['scssToCss','browser-sync','nunjucks','public','publicBase','jsCompress','watch']);
+gulp.task('web', ['scssToCssWeb','browser-sync','nunjucks','public','publicBase','jsCompress','watch']);
 gulp.task('openbrowser', ['scssToCss','browser-sync-open-browser','public','publicBase','nunjucks','jsCompress','svgstore','watch']);
 
