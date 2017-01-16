@@ -1,19 +1,14 @@
 {% extends "layout.nunjucks" %}
 
-{% block content %} 
+{% block content %}
 
 {% include "partials/icons.nunjucks" %}
 {% import 'macros/icons-macro.nunjucks' as svg %}
  <div id="wrapper">
-
-        <!--  Add components inside body tag after this line only -------------------------->
         {% include "partials/header.nunjucks" %}
-
         <main>
            {% include "components/exampleComponent.nunjucks" %}
         </main>
-
-        <!--  stop adding components at this line only ------------------------------------->
 </div>
 
 {% endblock %}

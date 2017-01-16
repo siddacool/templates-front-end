@@ -1,9 +1,4 @@
 {# /* Header */ #}
-
-{# //--- #}
-{# //### Create #}
-{# //+++ #}
-
 <header>
     <div box="fluid">
         <section gd-y="middle" gd-x="center" gd-noFlex>
@@ -13,5 +8,3 @@
         </section>
     </div>
 </header>
-
-{# //--- #}
