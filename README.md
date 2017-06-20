@@ -1,4 +1,4 @@
-# Wee-Ui kit
+# webpack template
 
 Startup Guide
 
